@@ -110,3 +110,47 @@ tape( 'if `x` is the minimum negative normal double and `y > x`, the function re
 	t.equal( z, expected, 'returns largest subnormal' );
 	t.end();
 });
+
+tape( 'if `x` is the maximum positive subnormal double and `y > x`, the function returns the smallest positive normal double', function test( t ) {
+	var expected;
+	var sign;
+	var frac;
+	var exp;
+	var x;
+	var z;
+
+
+	sign = '0';
+	exp = repeat( '0', 11 );
+	frac = repeat( '1', 52 );
+
+	x = fromBits( sign+exp+frac );
+	expected = SMALLEST_FLOAT64;
+
+	z = nextafter( x, 1 );
+
+	t.equal( z, expected, 'returns minimum normal' );
+	t.end();
+});
+
+tape( 'if `x` is the maximum negative subnormal double and `y < x`, the function returns the smallest negative subnormal double', function test( t ) {
+	var expected;
+	var sign;
+	var frac;
+	var exp;
+	var x;
+	var z;
+
+
+	sign = '1';
+	exp = repeat( '0', 11 );
+	frac = repeat( '1', 52 );
+
+	x = fromBits( sign+exp+frac );
+	expected = -SMALLEST_FLOAT64;
+
+	z = nextafter( x, -1 );
+
+	t.equal( z, expected, 'returns minimum normal' );
+	t.end();
+});
