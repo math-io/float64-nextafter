@@ -13,6 +13,16 @@ var repeat = require( 'utils-repeat-string' );
 var nextafter = require( './../lib' );
 
 
+// FIXTURES //
+
+var normal = require( './fixtures/normal.json' );
+var negativeSubnormal = require( './fixtures/negative_subnormal.json' );
+var positiveSubnormal = require( './fixtures/positive_subnormal.json' );
+var negativeVeryLarge = require( './fixtures/negative_very_large.json' );
+var positiveVeryLarge = require( './fixtures/positive_very_large.json' );
+var positiveLarge = require( './fixtures/positive_large.json' );
+
+
 // TESTS //
 
 tape( 'main export is a function', function test( t ) {
@@ -152,5 +162,113 @@ tape( 'if `x` is the maximum negative subnormal double and `y < x`, the function
 	z = nextafter( x, -1 );
 
 	t.equal( z, expected, 'returns minimum normal' );
+	t.end();
+});
+
+tape( 'the function returns the next representable double-precision floating-point number', function test( t ) {
+	var expected;
+	var x;
+	var y;
+	var z;
+	var i;
+
+	x = normal.x;
+	y = normal.y;
+	expected = normal.expected;
+
+	for ( i = 0; i < x.length; i++ ) {
+		z = nextafter( x[i], y[i] );
+		t.equal( z, expected[i], 'returns '+expected[i]+' when provided '+x[i]+' and '+y[i] );
+	}
+	t.end();
+});
+
+tape( 'the function returns the next representable double-precision floating-point number (negative subnormal)', function test( t ) {
+	var expected;
+	var x;
+	var y;
+	var z;
+	var i;
+
+	x = negativeSubnormal.x;
+	y = negativeSubnormal.y;
+	expected = negativeSubnormal.expected;
+
+	for ( i = 0; i < x.length; i++ ) {
+		z = nextafter( x[i], y[i] );
+		t.equal( z, expected[i], 'returns '+expected[i]+' when provided '+x[i]+' and '+y[i] );
+	}
+	t.end();
+});
+
+tape( 'the function returns the next representable double-precision floating-point number (positive subnormal)', function test( t ) {
+	var expected;
+	var x;
+	var y;
+	var z;
+	var i;
+
+	x = positiveSubnormal.x;
+	y = positiveSubnormal.y;
+	expected = positiveSubnormal.expected;
+
+	for ( i = 0; i < x.length; i++ ) {
+		z = nextafter( x[i], y[i] );
+		t.equal( z, expected[i], 'returns '+expected[i]+' when provided '+x[i]+' and '+y[i] );
+	}
+	t.end();
+});
+
+tape( 'the function returns the next representable double-precision floating-point number (negative very large)', function test( t ) {
+	var expected;
+	var x;
+	var y;
+	var z;
+	var i;
+
+	x = negativeVeryLarge.x;
+	y = negativeVeryLarge.y;
+	expected = negativeVeryLarge.expected;
+
+	for ( i = 0; i < x.length; i++ ) {
+		z = nextafter( x[i], y[i] );
+		t.equal( z, expected[i], 'returns '+expected[i]+' when provided '+x[i]+' and '+y[i] );
+	}
+	t.end();
+});
+
+tape( 'the function returns the next representable double-precision floating-point number (positive very large)', function test( t ) {
+	var expected;
+	var x;
+	var y;
+	var z;
+	var i;
+
+	x = positiveVeryLarge.x;
+	y = positiveVeryLarge.y;
+	expected = positiveVeryLarge.expected;
+
+	for ( i = 0; i < x.length; i++ ) {
+		z = nextafter( x[i], y[i] );
+		t.equal( z, expected[i], 'returns '+expected[i]+' when provided '+x[i]+' and '+y[i] );
+	}
+	t.end();
+});
+
+tape( 'the function returns the next representable double-precision floating-point number (positive large)', function test( t ) {
+	var expected;
+	var x;
+	var y;
+	var z;
+	var i;
+
+	x = positiveLarge.x;
+	y = positiveLarge.y;
+	expected = positiveLarge.expected;
+
+	for ( i = 0; i < x.length; i++ ) {
+		z = nextafter( x[i], y[i] );
+		t.equal( z, expected[i], 'returns '+expected[i]+' when provided '+x[i]+' and '+y[i] );
+	}
 	t.end();
 });
