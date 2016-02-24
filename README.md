@@ -29,8 +29,8 @@ var z = nextafter( 1, 100 )
 z = nextafter( 1, 0 );
 // returns 0.9999999999999999
 
-z = nextafter( 9007199254740992, 1e300 );
-// returns 9007199254740994
+z = nextafter( -9007199254740992, -1e300 );
+// returns -9007199254740994
 ```
 
 If `x` equals `y`, the `function` returns `y`, ensuring consistent behavior around zero.
