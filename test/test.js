@@ -6,6 +6,7 @@ var tape = require( 'tape' );
 var PINF = require( 'const-pinf-float64' );
 var NINF = require( 'const-ninf-float64' );
 var SMALLEST_SUBNORMAL = require( 'const-smallest-float64' ).DENORMALIZED;
+var MAX_FLOAT64 = require( 'const-max-float64' );
 var nextafter = require( './../lib' );
 
 
@@ -54,5 +55,17 @@ tape( 'if `x` is `0` and `y` is positive, the function returns the minimum posit
 tape( 'if `x` is `0` and `y` is negative, the function returns the minimum negative subnormal number', function test( t ) {
 	var z = nextafter( 0.0, -1.0 );
 	t.equal( z, -SMALLEST_SUBNORMAL, 'returns min negative subnormal' );
+	t.end();
+});
+
+tape( 'if `x` is the maximum positive double and `y` is `+infinity`, the function overflows and returns `+infinity`', function test( t ) {
+	var z = nextafter( MAX_FLOAT64, PINF );
+	t.equal( z, PINF, 'returns +infinity' );
+	t.end();
+});
+
+tape( 'if `x` is the maximum negative double and `y` is `-infinity`, the function overflows and returns `-infinity`', function test( t ) {
+	var z = nextafter( -MAX_FLOAT64, NINF );
+	t.equal( z, NINF, 'returns -infinity' );
 	t.end();
 });

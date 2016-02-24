@@ -49,12 +49,15 @@
     "url": "https://github.com/math-io/float64-nextafter/issues"
   },
   "dependencies": {
+    "const-max-uint32": "^1.0.2",
     "const-smallest-float64": "^1.0.0",
+    "math-float64-from-words": "^1.0.0",
     "math-float64-to-words": "^1.0.0"
   },
   "devDependencies": {
     "browserify": "13.x.x",
     "codecov": "1.x.x",
+    "const-max-float64": "^1.0.0",
     "const-ninf-float64": "^1.0.0",
     "const-pinf-float64": "^1.0.0",
     "istanbul": "^0.4.1",
