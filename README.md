@@ -2,7 +2,7 @@ nextafter
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][build-image]][build-url] [![Coverage Status][coverage-image]][coverage-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Return the next representable [double-precision floating-point number][ieee754] after `x` toward `y`.
+> Returns the next representable [double-precision floating-point number][ieee754] after `x` toward `y`.
 
 
 ## Installation
