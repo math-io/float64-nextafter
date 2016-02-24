@@ -63,9 +63,11 @@
     "istanbul": "^0.4.1",
     "jshint": "2.x.x",
     "jshint-stylish": "2.x.x",
+    "math-float64-from-bits": "^1.0.0",
     "tap-spec": "4.x.x",
     "tape": "4.x.x",
-    "testling": "1.x.x"
+    "testling": "1.x.x",
+    "utils-repeat-string": "^1.0.3"
   },
   "testling": {
     "files": [

@@ -6,7 +6,10 @@ var tape = require( 'tape' );
 var PINF = require( 'const-pinf-float64' );
 var NINF = require( 'const-ninf-float64' );
 var SMALLEST_SUBNORMAL = require( 'const-smallest-float64' ).DENORMALIZED;
+var SMALLEST_FLOAT64 = require( 'const-smallest-float64' ).VALUE;
 var MAX_FLOAT64 = require( 'const-max-float64' );
+var fromBits = require( 'math-float64-from-bits' );
+var repeat = require( 'utils-repeat-string' );
 var nextafter = require( './../lib' );
 
 
@@ -67,5 +70,43 @@ tape( 'if `x` is the maximum positive double and `y` is `+infinity`, the functio
 tape( 'if `x` is the maximum negative double and `y` is `-infinity`, the function overflows and returns `-infinity`', function test( t ) {
 	var z = nextafter( -MAX_FLOAT64, NINF );
 	t.equal( z, NINF, 'returns -infinity' );
+	t.end();
+});
+
+tape( 'if `x` is the minimum positive normal double and `y < x`, the function returns the largest subnormal double', function test( t ) {
+	var expected;
+	var sign;
+	var frac;
+	var exp;
+	var z;
+
+
+	sign = '0';
+	exp = repeat( '0', 11 );
+	frac = repeat( '1', 52 );
+
+	expected = fromBits( sign+exp+frac );
+	z = nextafter( SMALLEST_FLOAT64, 0 );
+
+	t.equal( z, expected, 'returns largest subnormal' );
+	t.end();
+});
+
+tape( 'if `x` is the minimum negative normal double and `y > x`, the function returns the largest subnormal double', function test( t ) {
+	var expected;
+	var sign;
+	var frac;
+	var exp;
+	var z;
+
+
+	sign = '1';
+	exp = repeat( '0', 11 );
+	frac = repeat( '1', 52 );
+
+	expected = fromBits( sign+exp+frac );
+	z = nextafter( -SMALLEST_FLOAT64, 0 );
+
+	t.equal( z, expected, 'returns largest subnormal' );
 	t.end();
 });
