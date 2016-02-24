@@ -27,6 +27,29 @@ var z = nextafter()
 // returns 
 ```
 
+If `x` equals `y`, the `function` returns `y`, ensuring consistent behavior around zero.
+
+``` javascript
+var z = nextafter( +0.0, -0.0 );
+// returns -0.0
+
+z = nextafter( -0.0, +0.0 );
+// returns +0.0
+```
+
+If either `x` or `y` is `NaN`, the `function` returns `NaN`.
+
+``` javascript
+var z = nextafter( NaN, 5.0 );
+// returns NaN
+
+z = nextafter( 5.0, NaN );
+// returns NaN
+
+z = nextafter( NaN, NaN );
+// returns NaN
+```
+
 
 ## Examples
 

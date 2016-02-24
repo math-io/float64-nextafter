@@ -54,6 +54,8 @@
   "devDependencies": {
     "browserify": "13.x.x",
     "codecov": "1.x.x",
+    "const-ninf-float64": "^1.0.0",
+    "const-pinf-float64": "^1.0.0",
     "istanbul": "^0.4.1",
     "jshint": "2.x.x",
     "jshint-stylish": "2.x.x",
