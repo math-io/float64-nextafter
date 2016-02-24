@@ -119,3 +119,6 @@ Copyright &copy; 2016. The [Compute.io][compute-io] Authors.
 [tape]: https://github.com/substack/tape
 [istanbul]: https://github.com/gotwarlost/istanbul
 [testling]: https://ci.testling.com
+
+[compute-io]: https://github.com/compute-io/
+[ieee754]: https://en.wikipedia.org/wiki/IEEE_754-1985
