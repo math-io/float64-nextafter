@@ -23,8 +23,14 @@ var nextafter = require( 'math-float64-nextafter' );
 Returns the next representable [double-precision floating-point number][ieee754] after `x` toward `y`.
 
 ``` javascript
-var z = nextafter()
-// returns 
+var z = nextafter( 1, 100 )
+// returns 1.0000000000000002
+
+z = nextafter( 1, 0 );
+// returns 0.9999999999999999
+
+z = nextafter( 9007199254740992, 1e300 );
+// returns 9007199254740994
 ```
 
 If `x` equals `y`, the `function` returns `y`, ensuring consistent behavior around zero.
