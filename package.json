@@ -49,6 +49,7 @@
     "url": "https://github.com/math-io/float64-nextafter/issues"
   },
   "dependencies": {
+    "const-smallest-float64": "^1.0.0",
     "math-float64-to-words": "^1.0.0"
   },
   "devDependencies": {
